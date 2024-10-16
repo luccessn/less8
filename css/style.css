@@ -1,0 +1,17 @@
+.section{
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    
+}
+.avatar{
+    width: 30px;
+    border-radius: 20px;
+}
+.getusers{
+    position: absolute;
+    left: 20%;
+    top: 10px;
+    border: 2px solid black;
+    padding: 20px;
+}
