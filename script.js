@@ -26,7 +26,14 @@ function all(page) {
         p.appendChild(img);
         fragment.appendChild(p);
       });
-
+      if (currentPage == 1) {
+        (document.getElementById("load-prev").disabled = true),
+          (document.getElementById("load-more").disabled = false);
+      }
+      if (currentPage == totalPages) {
+        (document.getElementById("load-prev").disabled = false),
+          (document.getElementById("load-more").disabled = true);
+      }
       document.getElementById("ul-users").innerHTML = "";
       document.getElementById("ul-users").appendChild(fragment);
       totalPages = mosulidata.total_pages;
@@ -40,20 +47,13 @@ function all(page) {
     });
 }
 all(currentPage);
-let prev = document.getElementById("load-prev");
 
-prev.addEventListener("click", function () {
+document.getElementById("load-prev").addEventListener("click", function () {
   currentPage--;
   all(currentPage);
-  if (currentPage === 1) {
-    return (prev.disabled = true), (next.disabled = false);
-  }
 });
-let next = document.getElementById("load-more");
-next.addEventListener("click", function () {
+
+document.getElementById("load-more").addEventListener("click", function () {
   currentPage++;
   all(currentPage);
-  if (currentPage == totalPages) {
-    return (next.disabled = true), (prev.disabled = false);
-  }
 });
